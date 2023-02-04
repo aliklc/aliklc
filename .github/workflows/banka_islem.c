@@ -1,36 +1,57 @@
-# This is a basic workflow to help you get started with Actions
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
-name: CI
 
-# Controls when the workflow will run
-on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
-jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+int main(int argc, char *argv[]) {
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+  srand(time(NULL));
+	int bakiye,tutar,islem;
+	bakiye=rand()%1000;
+	
+	
+	
+	printf("Bakiyeniz= %d\n",bakiye);
+	printf("   ***Islemler***\n");
+	printf("1. Para Cekme\n");
+	printf("2. Para Yatirma\n");
+	printf("3. Bakiye Sorgulama\n");
+	printf("4. Kart Iade\n");
+	
+	printf("Lutfen Bir Islem Seciniz:");
+	scanf("%d",&islem);
+	
+	switch(islem){
+		
+		case 1:
+			printf("Cekmek Istediginiz Tutari Girin= ");
+			scanf("%d",&tutar);
+			if(tutar>bakiye)
+			{
+				printf("Yetersiz Bakiye");
+			}
+			else
+			{
+				bakiye -= tutar;
+				printf("Yeni Bakiye= %d",bakiye);
+			}
+			break;
+		case 2:
+			printf("Yatirmak Istediginiz Tutari Girin");
+			scanf("%d",&tutar);
+			bakiye += tutar;
+			printf("Yeni Bakiye= %d",bakiye);
+			break;
+		case 3:
+			printf("Bakiyeniz= %d",bakiye);
+			break;
+		case 4:
+			printf("Kartinizi Aliniz");
+			break;		
+	}
+  
+  	return 0;
+}
